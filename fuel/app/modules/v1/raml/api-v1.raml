@@ -1,0 +1,157 @@
+#%RAML 0.8
+title: Bit API Hub API
+version: 1
+baseUri: https://api.bitapihub.com/{version}
+protocols: [HTTPS]
+securitySchemes:
+  server-side:
+    description: The security scheme for server side calls to Bit API Hub
+    type: x-custom
+    describedBy:
+      headers:
+        X-Authorization:
+          description: The OAuth 1.0a security string
+          type: string
+    settings:
+      url: <current-url>
+  client-side:
+    description: The security scheme for client side calls to Bit API Hub
+    type: x-custom
+    describedBy:
+      body:
+        multipart/form-data:
+          formParameters:
+            consumer_key:
+              description: Your API consumer key
+              type: string
+securedBy: [server-side, client-side]
+/
+  displayName: All calls
+  post:
+    description: All calls to Bit API Hub must use POST.
+    body:
+      multipart/form-data
+        api:
+          description: The name of the API you're calling (Required unless you're making a Data Call)
+          type: string
+          maxLength: 50
+        static-call:
+          description: The name of the static call you wish to make
+          type: string
+        CORS:
+          description: The URL you wish to have in the CORS header when making a client-side API call
+          type: string
+        data-call:
+          description: The name of the Data Call you wish to make
+          type: string
+          maxLength: 50
+        linkback-color:
+          description: |
+                       The color of the Bit API Hub logo in the linkback for your Data Call - Most packages allow for
+                       removal of the linkback. However, when the linkback shows on your site, you'll want to ensure
+                       that it matches your site in an appealing way. Set this value to "light" or "dark" to describe
+                       the color scheme of our logo.
+                       
+                       As most sites have a light color contrast, the default is to display our logo in a dark color
+                       scheme.
+          type: string
+          default: dark
+          enum: [dark,light]
+        call-options:
+          description: |
+                       If you need to change a couple options in one or more of your Data Calls, or you wish to change
+                       your template data or variables, simply set this token to an array consisting of the changes
+                       you'd like to make. See the documentation on the structure of a Data Call script to see what
+                       options you may set here.
+                       
+                       call-options must be a JSON array.
+          type: string
+        call-script:
+          description: |
+                       When using the "custom" Data Call, set this parameter to the array of calls you wish us to
+                       process for you. You may also specify any template information you wish to use. (Format your
+                       array as a JSON array.)
+          type: string
+        no-response:
+          description: |
+                       When running a Data Call for which you do not need the response data, set this parameter to
+                       boolean true to save time . We won't retrieve any responses or template data. We'll only
+                       send you a response stating that your request completed successfully.
+          type: boolean
+        format:
+          description: The format you in which you wish to receive your response
+          type: string
+          default: json
+          enum: ['json', 'jsonp', 'xml', 'rawxml', 'html']
+        language:
+          description: The language you wish to use for error messages (The *type* of error will always be in English.)
+          type: string
+          default: en
+          enum: ['en']
+        configure:
+          description: |
+                       The JSON array of configuration data for your call (It must contain the "uri" and "method" keys,
+                       and may also contain arrays of data or "query", "headers", and "body". "body" may be a raw
+                       string to send to the remote server if we do not support auto-conversion to the remote API's
+                       format, or if you simply find that it's easier for you to supply the request body yourself.
+
+                       If you're "body" is an array, and the remote server will speak in XML, then set "basenode" to
+                       the value we should set for the XML basenode of our request to the remote server.
+                       
+                       When making a custom call, set the "url" token to the base URL of the target API, and if "body"
+                       is set to an array, set "media-type" to the format to convert the data to. If "media-type" is
+                       not present, then we'll send the request in JSON, or if you set "basenode", then we'll send the
+                       request in XML. If we cannot convert to the specified type, then you'll get an error.)
+          type: string
+        no-validate:
+          description: |
+                       Some integrated APIs may allow you to make dynamic calls that are not documented in our system, or
+                       may allow you to skip the validation process our system performs on your request. If you find that
+                       you're having trouble making your desired call, set this value to boolean true to disable our
+                       validation system.
+          type: boolean
+          default: false
+        auth:
+          description: |
+                       By default, our system stores your credentials encrypted in our database. You may specify your
+                       credentials through your account area, or provide them as a JSON array for this token. If you're
+                       storing your credentials on our server, you do not have to keep your credentials set on this
+                       token. See the API provider's documentation on our system for the credential variable names to
+                       set here.
+          type: string
+    responses:
+      200:
+        description: |
+                     All 2XX series HTTP code responses contain the following structure, and the format can be
+                     expressed in all supported response formats.
+        body:
+          application/json:
+            code:
+              description: The HTTP status code for the response from our server
+              type: integer
+              minimum: 200
+              maximum: 506
+            ts:
+              description: |
+                           The Unix timestamp in GMT for when the call to the remote server was originally made (Cached
+                           static calls will retain their original timestamp.)
+              type: integer
+            response:
+              description: |
+                           The array of response data from the remote server - This array of data contains values for
+                           "status", the numeric HTTP status from the remote server; "headers", an array of headers
+                           from the remote server where available, and "body", the body from the remote server. If the
+                           remote server speaks in a format we're able to convert to an array, such as JSON or XML,
+                           then "body" will be an array. If we cannot convert it to an array for you, then "body" will
+                           contain the unaltered body data.
+      400:
+        description: |
+                     All non-2XX series HTTP code responses contain the following structure, and the format can be
+                     expressed in all supported response formats.
+        body:
+          application/json:
+            errors:
+              description: |
+                           This token holds values for "code", the HTTP status code for our server, "type", the
+                           unchanging string related to the type of error which occurred, and "message", a description
+                           of the problem that occurred.
