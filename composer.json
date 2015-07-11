@@ -1,9 +1,9 @@
 {
-    "name": "fuel/fuel",
+    "name": "API Optimization Engine",
     "type": "project",
-    "description" : "FuelPHP is a simple, flexible, community driven PHP 5.3+ framework, based on the best ideas of other frameworks, with a fresh start!",
-    "keywords": ["application", "website", "development", "framework", "PHP"],
-    "license": "MIT",
+    "description" : "The API Optimization Engine speeds up development time and your API calls.",
+    "keywords": ["api", "connectivity", "application", "website", "development", "PHP"],
+    "license": "Apache 2.0",
     "repositories": [
         { "type": "vcs", "url": "https://github.com/fuel/core" },
         { "type": "vcs", "url": "https://github.com/fuel/auth" },
