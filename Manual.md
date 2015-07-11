@@ -4,7 +4,7 @@ API Optimization Engine Manual
 **This manual is not yet completed.**
 
 This manual will guide you through the process of setting up your call processing server with the API Optimization
-Engine. After you've set up your server, you'll need to install the SDK for the engine. The connection between the
+Engine. After you've set up your server, you'll need to install an SDK for the engine. The connection between the
 call processing server and your web servers is secured with a stripped-down version of OAuth 1.0a. Some features of
 OAuth 1.0a (such as request keys) are unnecessarily processing intensive for the purposes of an internal connection,
 so they were removed. In future versions we're considering implementing a true OAuth 1.0a connection to allow for
@@ -35,7 +35,7 @@ access to the engine.
 Part 2: Integrating the engine with your product
 ------------------------------------------------
 
-There are samples included with the AOE-PHP-SDK repo.
+There are examples included with the [AOE-PHP-SDK](https://github.com/bitapihub/aoe-php-sdk).
 
 Part 3: Adding your first API
 -----------------------------
