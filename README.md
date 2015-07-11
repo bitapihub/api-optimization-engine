@@ -20,6 +20,7 @@ Requirements
 ------------
 
 - PHP 5.6+
+- MySQL or MariaDB 5.5+
 
 Optional
 --------
@@ -29,7 +30,7 @@ Optional
 Framework
 ---------
 
-The engine is built using the fastest full-featured PHP Framework, [FuelPHP](http://fuelphp). Check out the
+The engine is built using the fastest full-featured PHP Framework, [FuelPHP](http://fuelphp.com). Check out the
 configuration settings for the framework for a fully customized system, including your choice of caching systems
 and databases.
 
@@ -63,6 +64,24 @@ your code will always remain stable.
 original version of the API available. Only when the SemVer version changes to a new major release, will any or
 all current API versions may be removed or replaced.
 
+Setup
+-----
+
+1. Clone the repository or require the installation with Composer.
+2. Edit your config files to your liking, especially your DB configuration. Also be sure to change the desired
+environment setting in your .htaccess file. Port the .htaccess file to your http.conf to make it run faster.
+3. Through the shell interface, change the directory to your root installation directory. (Ex. /var/www/aeo)
+then run the following commands:
+
+```
+php oil refine install
+php oil refine migrate current
+```
+The second command requires a proper DB configuration.
+
+Your installation is complete, and you can now manually import the demo data from api_data.sql into your database.
+Read the [Manual](Manual.md) for further instructions.
+
 Optimizations
 -------------
 
@@ -77,7 +96,7 @@ to avoid wasting resources with one-off requests.
 in non-blocking mode (parallel) so you only need to wait as long as it takes for the longest call to complete.
 Remember that in serial the call time stacks, making three 5 second calls become a 15 second call.
 
-**[RAML Modeling Language](raml.org/spec.html)** - Stop bloating your code with messy SDKs that make your code
+**[RAML Modeling Language](http://raml.org/spec.html)** - Stop bloating your code with messy SDKs that make your code
 harder to read. Simply describe the remote API you're contacting by writing an easy to learn RAML specification.
 
 **Don't Wait for a Response** - You don't need the response from every API you call, so why wait for one? Simply
@@ -113,4 +132,4 @@ The Manual
 ----------
 
 The engine is quite complex, though the code you write to interact with it is quite simple. Take a look at
-[the manual](Manual) to see how to install the engine, and how to interact with it.
+[the manual](Manual.md) to see how to install the engine, and how to interact with it.
