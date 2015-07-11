@@ -67,7 +67,10 @@ all current API versions may be removed or replaced.
 Setup
 -----
 
-1. Clone the repository or require the installation with Composer.
+1. In the shell, run the following command where you want to install the engine.
+```
+composer require bitapihub/api-optimization-engine
+```
 2. Edit your config files to your liking, especially your DB configuration. Also be sure to change the desired
 environment setting in your .htaccess file. Port the .htaccess file to your http.conf to make it run faster.
 3. Through the shell interface, change the directory to your root installation directory. (Ex. /var/www/aeo)
