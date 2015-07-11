@@ -1,5 +1,5 @@
 {
-    "name": "API Optimization Engine",
+    "name": "bitapihub/api-optimization-engine",
     "type": "project",
     "description" : "The API Optimization Engine speeds up development time and your API calls.",
     "keywords": ["api", "connectivity", "application", "website", "development", "PHP"],
