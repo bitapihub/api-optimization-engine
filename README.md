@@ -3,11 +3,11 @@ API Optimization Engine
 
 The API Optimization Engine makes it faster for your server to talk to other servers while simplifying your
 software development, and keeping your code tidy. This engine implements the optimizations as defined in
-Rick Mac Gillis' book, "[The New Frontier in Web API Programming - Your Guide to API Optimization.](The New Frontier in Web API Programming.docx)"
+Rick Mac Gillis' book, "[The New Frontier in Web API Programming - Your Guide to API Optimization.](https://static.bitapihub.com/assets/docs/the-new-frontier-in-web-api-programming.pdf)"
 
 The engine supports an account-based environment to cater to the needs of SaaS companies looking to provide
 different APIs to different accounts, and different APIs to different account packages. Each account may own
-an API, and APIs may also be marked as avalable to anyone of a minimum package level.
+an API, and APIs may also be marked as available to anyone of a minimum package level.
 
 **Note:** This software is designed for companies with large numbers of API calls, either by multiple users
 or through multiple calls by one user. It's designed to speed up your company's network by reducing the load of
