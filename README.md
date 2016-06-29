@@ -42,7 +42,9 @@ Project Status
 The last state of this project is beta. As I have too many client projects that I'm working on, I'm not currently maintaining this project any longer. If it gains enough traction, I'll consider rewriting it.
 
 **WARNING**
-This project is developeed without modular design which is critical to maintainability! Therefore, if you do decide to use this project in whole or in part, you're strongly encouraged to make it modular. When I wrote this, I had not yet discovered Robert C. Martin's [Clean Code](https://cleancoders.com/) standards, and admittedly, the codebase looks like crap. If you're evaluating me for your next project, check out my newer projects, such as [Hack Fast Algos](https://github.com/cozylife/hackfastalgos) or [the source for Rick Mac Gillis.com](https://github.com/cozylife/rickmacgillis).
+This project is developed without modular design which is critical to maintainability! Therefore, if you do decide to use this project in whole or in part, you're strongly encouraged to make it modular. When I wrote this, I had not yet discovered Robert C. Martin's [Clean Code](https://cleancoders.com/) standards, and admittedly, the codebase looks like crap.
+
+If you're evaluating me for your next project, check out my newer projects, such as [Hack Fast Algos](https://github.com/cozylife/hackfastalgos) or [the source for Rick Mac Gillis.com](https://github.com/cozylife/rickmacgillis).
 
 Limitations
 -----------
